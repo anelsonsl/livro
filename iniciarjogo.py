@@ -1,4 +1,5 @@
 from random import randint
+import pickle
 
 def linha():
     print('='*30)
@@ -91,3 +92,23 @@ linha()
 escolher_feiticos()
 
 #Agora gravar em ficheiro
+nfic=input('Nome do ficheiro:')
+nfic+='.pkl'
+print(f'Nome do ficheiro final {nfic}')
+
+linha()
+print(f'Gravar ficheiro: {nfic}')
+with open(nfic,'wb') as f:
+    pickle.dump(valor,f) # falta ,f
+
+linha()
+valor['hm'][1]=5
+print(f'valor alterado hm 1 = 5')
+print(valor)
+
+linha()
+print('ler ficheiro')
+with open(nfic,'rb') as f:
+    valor=pickle.load(f)
+
+print(valor)
